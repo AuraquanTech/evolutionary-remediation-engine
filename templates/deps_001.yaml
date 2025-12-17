@@ -1,0 +1,27 @@
+id: DEPS_001
+name: Update Vulnerable Dependency
+confidence: 0.96
+risk_tier: SAFE
+languages: [javascript, python]
+
+evidence:
+  occurrence_count: 891
+  repo_count: 156
+  median_merge_hours: 0.8
+  median_discussion_density: 0.01
+  revert_rate: 0.01
+
+pattern:
+  match: '"{{package}}": "{{old_version}}"'
+  replace: '"{{package}}": "{{new_version}}"'
+
+companion_changes:
+  run_tests: true
+
+pr_template:
+  title: "Security: Update {{package}} to {{new_version}}"
+  body: |
+    Updates {{package}} to address security vulnerabilities.
+    
+    **CVE fixes:** Security patches included
+    **Evidence:** 891 similar updates, 99% merge rate.

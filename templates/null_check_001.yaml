@@ -1,0 +1,20 @@
+id: NULL_CHECK_001
+name: Add Null Checks
+confidence: 0.85
+risk_tier: MODERATE
+languages: [javascript, typescript]
+
+evidence:
+  occurrence_count: 412
+  repo_count: 73
+  median_merge_hours: 2.1
+  median_discussion_density: 0.08
+  revert_rate: 0.03
+
+pattern:
+  match: 'if ({{VAR}}) {'
+  replace: 'if ({{VAR}} != null) {'
+
+pr_template:
+  title: "Safety: Add null check for {{VAR}}"
+  body: "Adds explicit null check to prevent undefined reference errors."

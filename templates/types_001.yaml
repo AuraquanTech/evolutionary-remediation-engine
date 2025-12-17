@@ -1,0 +1,20 @@
+id: TYPES_001
+name: Add TypeScript Definitions
+confidence: 0.88
+risk_tier: MODERATE
+languages: [typescript]
+
+evidence:
+  occurrence_count: 320
+  repo_count: 52
+  median_merge_hours: 1.5
+  median_discussion_density: 0.05
+  revert_rate: 0.02
+
+pattern:
+  match: 'export function {{FUNC}}({{PARAMS}}) {'
+  replace: 'export function {{FUNC}}({{PARAMS}}): {{RETURN_TYPE}} {'
+
+pr_template:
+  title: "Improve: Add type definitions to {{FUNC}}"
+  body: "Adds explicit type definitions for better IDE support and type safety."

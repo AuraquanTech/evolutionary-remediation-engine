@@ -1,0 +1,20 @@
+id: UNUSED_001
+name: Remove Unused Imports
+confidence: 0.94
+risk_tier: SAFE
+languages: [javascript, typescript, python]
+
+evidence:
+  occurrence_count: 500
+  repo_count: 89
+  median_merge_hours: 0.5
+  median_discussion_density: 0.01
+  revert_rate: 0.0
+
+pattern:
+  match: 'import {{VAR}} from "{{module}}"'
+  condition: "{{VAR}} never used"
+
+pr_template:
+  title: "Cleanup: Remove unused import {{VAR}}"
+  body: "Removes unused imports to reduce bundle size and improve clarity."

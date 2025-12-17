@@ -1,0 +1,20 @@
+id: ERROR_HANDLING_001
+name: Add Error Handling
+confidence: 0.80
+risk_tier: MODERATE
+languages: [javascript, typescript, python]
+
+evidence:
+  occurrence_count: 245
+  repo_count: 42
+  median_merge_hours: 3.2
+  median_discussion_density: 0.12
+  revert_rate: 0.05
+
+pattern:
+  match: 'try { {{CODE}} }'
+  replace: 'try { {{CODE}} } catch (e) { logger.error(e); }'
+
+pr_template:
+  title: "Robustness: Add error handling to {{FUNC}}"
+  body: "Adds try-catch block to prevent unhandled errors."
